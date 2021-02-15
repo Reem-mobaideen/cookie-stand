@@ -1,38 +1,45 @@
 'use strict';
 let hours=['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm']
+
+function randomCust (min,max){
+  return Math.floor( Math.random()*(max-min+1)+min);
+}
 //object of location1 
-let location1 = {
-  Name:'Seattle',
-  Min:23,
-  Max:65,
-  Avgcookie:6.3,
-  Custperhour:[],
-  Cookiesperhour:[],
+let seattle = {
+  location:'Seattle',
+  minCustomer:23,
+  maxCustomer:65,
+  avgCookie:6.3,
+  custperhour:[],
+  cookiesperhour:[],
 
   
-  getcustperhour:function (Min,Max){
+  getcustperhour:function ( ){
     for (let i=0;i<hours.length;i++){
-    this.Custperhour[i] = randomCust(location1.Min,location1.Max);
-    console.log(location1.Custperhour);
+    this.custperhour.push( randomCust(this.minCustomer,this.maxCustomer));
+    //console.log(location.custperhour);
     }
+   
   },
+  
   getCookiesperhour:function ( ){
     for (let i=0;i<hours.length;i++){
-      this.Cookiesperhour[i]=this.hours[i]*this.Avgcookie;
-      console.log(location1.Cookiesperhour);
+      this.cookiesperhour.push(this.custperhour[i]*this.avgCookie);
+      //console.log(location.cookiesperhour[i]);
     }
   }
-}
 
-function randomCust (Min,Max){
-  return Math.floor( Math.random()*(Max-Min+1)+Min);
 }
-location1.getcustperhour();
-location1.getCookiesperhour();
-console.log(getcustperhour,getCookiesperhour);
+seattle.getcustperhour();
+seattle.getCookiesperhour();
+console.log(seattle);
+
+//console.log(seattle.getCookiesperhour);
+
 
 
 //object of location2 
+/*
 let locatin2 = {
   Name:'Tokyo',
   Min:3,
@@ -301,4 +308,4 @@ function randomcust(Min,Max){
 }
 location5.getcustperhour();
 location5.getCookiesperhour();
-console.log(getcustperhour,getCookiesperhour);
+console.log(getcustperhour,getCookiesperhour);*/
