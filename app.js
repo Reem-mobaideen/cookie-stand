@@ -12,6 +12,8 @@ function Location(locationName,minCustomer,maxCustomer,avgCookie,customersEachHo
     this.customersEachHour=customersEachHour;
     this.cookiesEachHour=cookiesEachHour;
     //this.total=total;
+    console.log(this);
+    //hours.push(this);
 
    Location.prototype.customersEachHour=function( ){
     for (let i=0;i<hours.length;i++){
@@ -43,40 +45,45 @@ console.log(Paris);
 let Lima= new Location('Lima',2,16,4.6,[],[]);
 console.log(Lima);
 
-//Seattle.customersEachHour();
-//Seattle.cookiesEachHour();
+//seattle.customersEachHour();
+//seattle.cookiesEachHour();
 
 
-Location.prototype.render=function () {
-  const parent = document.getElementById('salmon cookies');
+//Location.prototype.render=function () {
+  //const parent = document.getElementById('salmon cookies');
+  let parent = document.getElementById('parent');
 
+  console.log(parent);
 
-let cookiesTable= document.createElement('table');
-parent.appendChild(cookiesTable)
-console.log(parent);
-
-let headerRow= document.createElement('th');
-cookiesTable.appendChild(headerRow);
-for (let i=0;i<hours.length;i++){
+let table= document.createElement('table');
+parent.appendChild(table)
+//console.log(parent);
+let headerRow= document.createElement('tr');
+table.appendChild(headerRow);
+//let th1=document.createElement('th');
+for(let i=0;i<hours.length;i++){
     let th=document.createElement('th');
     headerRow.appendChild(th);
-    th.textContent=hours[i];
+    th.textContent=(hours[i]);
     
-
-//create rows
-for (let i=0;i<hours.length;i++){
+}
+//create multiple rows
+for (let i=0;i<6;i++){
 let dataRow=document.createElement('tr');
-cookiesTable.appendChild(dataRow);
+table.appendChild(dataRow);
 
+for (let j=0;j<=hours.length+1; j++){
+ let td1=document.createElement('td');
+ dataRow.appendChild(td1);
+ 
+}
+}
 //put data into cells
 for (let i=0;i<hours.length;i++){
-let tableData=document.createElement('td');
-dataRow.appendChild('tableData');
+let table=document.createElement('td');
+dataRow.appendChild('td1');
 
-tableData.textContent=this.cookiesEachHour[i].name;
+table.textContent=this.Location(hours[i]);
 
-Seattle.render()
-}
-}
-}
+//Seattle.render()
 }
