@@ -12,6 +12,7 @@ let seattle = {
   avgCookie:6.3,
   custperhour:[],
   cookiesperhour:[],
+  total:0,
 
   
   getcustperhour:function ( ){
@@ -24,288 +25,345 @@ let seattle = {
   
   getCookiesperhour:function ( ){
     for (let i=0;i<hours.length;i++){
-      this.cookiesperhour.push(this.custperhour[i]*this.avgCookie);
+      this.cookiesperhour.push(Math.floor(this.custperhour[i]*this.avgCookie));
       //console.log(location.cookiesperhour[i]);
+      this.total+=this.cookiesperhour[i]
     }
+  },
+
+
+render:function(){
+  // get the parent element by id:
+  let parent= document.getElementById('parent');
+  console.log(parent);
+  
+  let shopName = document.createElement('h3');
+  
+  parent.appendChild(shopName);
+  
+  // give text content
+  shopName.textContent = this.location;
+  
+  // created an element 
+  let unorderedList=document.createElement('ul');
+  // append element to parent
+  parent.appendChild(unorderedList);
+   
+
+  for(let i =0;i<hours.length;i++){
+    // create li
+    let listItem=document.createElement('li');
+    // append li
+    unorderedList.appendChild(listItem);
+    // give text content
+    listItem.textContent = `${hours[i]}: ${this.cookiesperhour[i]} cookies`
   }
 
+  // create total elemnt:
+  let totalItem = document.createElement('li');
+
+  unorderedList.appendChild(totalItem);
+
+  totalItem.textContent=`total: ${this.total} cookies`;
+  
 }
+
+}
+
 seattle.getcustperhour();
 seattle.getCookiesperhour();
+seattle.render();
 console.log(seattle);
-
-//console.log(seattle.getCookiesperhour);
 
 
 
 //object of location2 
-/*
-let locatin2 = {
-  Name:'Tokyo',
-  Min:3,
-  Max:24,
-  Avgcookie:1.2,
-  Cusperhour:[],
-  Cookiesperhour:[],
-  getcustperhour:function (Min,Max){
+let tokyo = {
+  location:'Tokyo',
+  minCustomer:3,
+  maxCustomer:24,
+  avgCookie:1.2,
+  custperhour:[],
+  cookiesperhour:[],
+  total:0,
+
+  
+  getcustperhour:function ( ){
     for (let i=0;i<hours.length;i++){
-    this.Custperhour[i] = randomCust(location2.Min,location1.Max);
-    console.log(location2.Custperhour);
+    this.custperhour.push( randomCust(this.minCustomer,this.maxCustomer));
+    //console.log(location.custperhour);
     }
+   
   },
+  
   getCookiesperhour:function ( ){
     for (let i=0;i<hours.length;i++){
-      this.Cookiesperhour[i]=this.hours[i]*this.Avgcookie;
-      console.log(location2.Cookiesperhour);
-    }
-  }
-}
-
-function randomCust (Min,Max){
-  return Math.floor( Math.random()*(Max-Min+1)+Min);
-}
-location2.getcustperhour();
-location2.getCookiesperhour();
-console.log(getcustperhour,getCookiesperhour);
-
-//object of location3
-let locatin3 = {
-  Name:'Dubai',
-  Min:11,
-  Max:38,
-  Avgcookie:3.7,
-  Cusperhour:[],
-  Cookiesperhour:[],
-
-  getcustperhour:function (Min,Max){
-    for (let i=0;i<hours.length;i++){
-    this.Custperhour[i] = randomCust(location1.Min,location3.Max);
-    console.log(location3.Custperhour);
+      this.cookiesperhour.push(Math.floor(this.custperhour[i]*this.avgCookie));
+      //console.log(tokyo.cookiesperhour[i]);
+      this.total+=this.cookiesperhour[i]
     }
   },
-  getCookiesperhour:function ( ){
-    for (let i=0;i<hours.length;i++){
-      this.Cookiesperhour[i]=this.hours[i]*this.Avgcookie;
-      console.log(location3.Cookiesperhour);
-    }
-  }
-}
-
-function randomCust (Min,Max){
-  return Math.floor( Math.random()*(Max-Min+1)+Min);
-}
-location3.getcustperhour();
-location3.getCookiesperhour();
-console.log(getcustperhour,getCookiesperhour);
-
-//object of location4
-let locatin4 = {
-  Name:'Paris',
-  Min:20,
-  Max:38,
-  Avgcookie:2.3,
-  Cusperhour:[],
-  Cookiesperhour:[],
-
-  getcustperhour:function (Min,Max){
-    for (let i=0;i<hours.length;i++){
-    this.Custperhour[i] = randomCust(location4.Min,location4.Max);
-    console.log(location1.Custperhour);
-    }
-  },
-  getCookiesperhour:function ( ){
-    for (let i=0;i<hours.length;i++){
-      this.Cookiesperhour[i]=this.hours[i]*this.Avgcookie;
-      console.log(location4.Cookiesperhour);
-    }
-  }
-}
-
-function randomCust (Min,Max){
-  return Math.floor( Math.random()*(Max-Min+1)+Min);
-}
-location4.getcustperhour();
-location4.getCookiesperhour();
-console.log(getcustperhour,getCookiesperhour);
-
-//object of location5
-let locatin5 = {
-  Name:'Lima',
-  Min:2,
-  Max:16,
-  Avgcookie:4.6,
-  Cusperhour:[],
-  Cookiesperhour:[],
-
-  getcustperhour:function (Min,Max){
-    for (let i=0;i<hours.length;i++){'use strict';
-    let hours=['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm']
-    //object of location1 
-    let location1 = {
-      Name:'Seattle',
-      Min:23,
-      Max:65,
-      Avgcookie:6.3,
-      Custperhour:[],
-      Cookiesperhour:[],
-    
+      render:function(){
+        // get the parent element by id:
+        let parent= document.getElementById('parent');
+        console.log(parent);
+        
+        let shopName = document.createElement('h3');
+        
+        parent.appendChild(shopName);
+        
+        // give text content
+        shopName.textContent = this.location;
+        
+        // created an element 
+        let unorderedList=document.createElement('ul');
+        // append element to parent
+        parent.appendChild(unorderedList);
+         
       
-      getcustperhour:function (Min,Max){
-        for (let i=0;i<hours.length;i++){
-        this.Cusperhour[i] = randomCust(location1.Min,location1.Max);
-        console.log(location1.Cusperhour);
+        for(let i =0;i<hours.length;i++){
+          // create li
+          let listItem=document.createElement('li');
+          // append li
+          unorderedList.appendChild(listItem);
+          // give text content
+          listItem.textContent = `${hours[i]}: ${this.cookiesperhour[i]} cookies`
         }
-      },
-      getCookiesperhour:function ( ){
-        for (let i=0;i<hours.length;i++){
-          this.Cookiesperhour[i]=this.hours[i]*this.Avgcookie;
-          console.log(location1.Cookiesperhour);
-        }
+      
+        // create total elemnt:
+        let totalItem = document.createElement('li');
+      
+        unorderedList.appendChild(totalItem);
+      
+        totalItem.textContent=`total: ${this.total} cookies`;
+        
       }
+      
+
+}
+tokyo.getcustperhour();
+tokyo.getCookiesperhour();
+tokyo.render();
+console.log(tokyo);
+
+
+
+
+let dubai = {
+  location:'Dubai',
+  minCustomer:11,
+  maxCustomer:38,
+  avgCookie:3.7,
+  custperhour:[],
+  cookiesperhour:[],
+  total:0,
+
+  
+  getcustperhour:function ( ){
+    for (let i=0;i<hours.length;i++){
+    this.custperhour.push( randomCust(this.minCustomer,this.maxCustomer));
+    //console.log(dubai.custperhour);
     }
-    
-    function randomCust (Min,Max){
-      return Math.floor( Math.random()*(Max-Min+1)+Min);
-    }
-    location1.getcustperhour();
-    location1.getCookiesperhour();
-    console.log(getcustperhour,getCookiesperhour);
-    
-    
-    //object of location2 
-    let locatin2 = {
-      Name:'Tokyo',
-      Min:3,
-      Max:24,
-      Avgcookie:1.2,
-      Cusperhour:[],
-      Cookiesperhour:[],
-      getcustperhour:function (Min,Max){
-        for (let i=0;i<hours.length;i++){
-        this.Cusperhour[i] = randomCust(location2.Min,location2.Max);
-        console.log(location2.Cusperhour);
-        }
-      },
-      getCookiesperhour:function ( ){
-        for (let i=1;i<hours.length;i++){
-          this.Cookiesperhour[i]=this.hours[i]*this.Avgcookie;
-          console.log(location2.Cookiesperhour);
-        }
-      }
-    }
-    
-    function randomcust (Min,Max){
-      return Math.floor( Math.random()*(Max-Min+1)+Min);
-    }
-    location2.getcustperhour();
-    location2.getCookiesperhour();
-    console.log(getcustperhour,getCookiesperhour);
-    
-    //object of location3
-    let locatin3 = {
-      Name:'Dubai',
-      Min:11,
-      Max:38,
-      Avgcookie:3.7,
-      Cusperhour:[],
-      Cookiesperhour:[],
-    
-      getcustperhour:function (Min,Max){
-        for (let i=0;i<hours.length;i++){
-        this.Cusperhour[i] = randomCust(location3.Min,location3.Max);
-        console.log(location3.Cusperhour);
-        }
-      },
-      getCookiesperhour:function ( ){
-        for (let i=0;i<hours.length;i++){
-          this.Cookiesperhour[i]=this.hours[i]*this.Avgcookie;
-          console.log(location3.Cookiesperhour);
-        }
-      }
-    }
-    
-    function randomcust (Min,Max){
-      return Math.floor( Math.random()*(Max-Min+1)+Min);
-    }
-    location3.getcustperhour();
-    location3.getCookiesperhour();
-    console.log(getcustperhour,getCookiesperhour);
-    
-    //object of location4
-    let locatin4 = {
-      Name:'Paris',
-      Min:20,
-      Max:38,
-      Avgcookie:2.3,
-      Cusperhour:[],
-      Cookiesperhour:[],
-    
-      getcustperhour:function (Min,Max){
-        for (let i=0;i<hours.length;i++){
-        this.Cusperhour[i] = randomCust(location4.Min,location4.Max);
-        console.log(location4.Cusperhour);
-        }
-      },
-      getCookiesperhour:function ( ){
-        for (let i=0;i<hours.length;i++){
-          this.Cookiesperhour[i]=this.hours[i]*this.Avgcookie;
-          console.log(location4.Cookiesperhour);
-        }
-      }
-    }
-    
-    function randomcust(Min,Max){
-      return Math.floor( Math.random()*(Max-Min+1)+Min);
-    }
-    location4.getcustperhour();
-    location4.getCookiesperhour();
-    console.log(getcustperhour,getCookiesperhour);
-    
-    //object of location5
-    let locatin5 = {
-      Name:'Lima',
-      Min:2,
-      Max:16,
-      Avgcookie:4.6,
-      Cusperhour:[],
-      Cookiesperhour:[],
-    
-      getcustperhour:function (Min,Max){
-        for (let i=0;i<hours.length;i++){
-        this.Cusperhour[i] = randomCust(location5.Min,location5.Max);
-        console.log(location5.Cusperhour);
-        }
-      },
-      getCookiesperhour:function ( ){
-        for (let i=0;i<hours.length;i++){
-          this.Cookiesperhour[i]=this.hours[i]*this.Avgcookie;
-          console.log(location5.Cookiesperhour);
-        }
-      }
-    }
-    
-    function randomcust(Min,Max){
-      return Math.floor( Math.random()*(Max-Min+1)+Min);
-    }
-    location5.getcustperhour();
-    location5.getCookiesperhour();
-    console.log(getcustperhour,getCookiesperhour);
-    
-    this.Cusperhour[i] = randomCust(location5.Min,location5.Max);
-    console.log(location5.Cusperhour);
-    }
+   
   },
+  
   getCookiesperhour:function ( ){
     for (let i=0;i<hours.length;i++){
-      this.Cookiesperhour[i]=this.hours[i]*this.Avgcookie;
-      console.log(location5.Cookiesperhour);
+      this.cookiesperhour.push(Math.floor(this.custperhour[i]*this.avgCookie));
+      //console.log(location.cookiesperhour[i]);
+  
+  this.total+=this.cookiesperhour[i]
     }
+  },
+
+
+render:function(){
+  // get the parent element by id:
+  let parent= document.getElementById('parent');
+  console.log(parent);
+  
+  let shopName = document.createElement('h3');
+  
+  parent.appendChild(shopName);
+  
+  // give text content
+  shopName.textContent = this.location;
+  
+  // created an element 
+  let unorderedList=document.createElement('ul');
+  // append element to parent
+  parent.appendChild(unorderedList);
+   
+
+  for(let i =0;i<hours.length;i++){
+    // create li
+    let listItem=document.createElement('li');
+    // append li
+    unorderedList.appendChild(listItem);
+    // give text content
+    listItem.textContent = `${hours[i]}: ${this.cookiesperhour[i]} cookies`
   }
+
+  // create total elemnt:
+  let totalItem = document.createElement('li');
+
+  unorderedList.appendChild(totalItem);
+
+  totalItem.textContent=`total: ${this.total} cookies`;
+  
 }
 
-function randomcust(Min,Max){
-  return Math.floor( Math.random()*(Max-Min+1)+Min);
 }
-location5.getcustperhour();
-location5.getCookiesperhour();
-console.log(getcustperhour,getCookiesperhour);*/
+dubai.getcustperhour();
+dubai.getCookiesperhour();
+dubai.render();
+console.log(dubai);
+
+
+
+
+
+let paris = {
+  location:'Paris',
+  minCustomer:20,
+  maxCustomer:38,
+  avgCookie:2.3,
+  custperhour:[],
+  cookiesperhour:[],
+  total:0,
+
+  
+  getcustperhour:function ( ){
+    for (let i=0;i<hours.length;i++){
+    this.custperhour.push( randomCust(this.minCustomer,this.maxCustomer));
+    //console.log(paris.custperhour);
+    }
+   
+  },
+  
+  getCookiesperhour:function ( ){
+    for (let i=0;i<hours.length;i++){
+      this.cookiesperhour.push(Math.floor(this.custperhour[i]*this.avgCookie));
+      //console.log(paris.cookiesperhour[i]);
+      this.total+=this.cookiesperhour[i]
+    }
+  },
+
+
+render:function(){
+  // get the parent element by id:
+  let parent= document.getElementById('parent');
+  console.log(parent);
+  
+  let shopName = document.createElement('h3');
+  
+  parent.appendChild(shopName);
+  
+  // give text content
+  shopName.textContent = this.location;
+  
+  // created an element 
+  let unorderedList=document.createElement('ul');
+  // append element to parent
+  parent.appendChild(unorderedList);
+   
+
+  for(let i =0;i<hours.length;i++){
+    // create li
+    let listItem=document.createElement('li');
+    // append li
+    unorderedList.appendChild(listItem);
+    // give text content
+    listItem.textContent = `${hours[i]}: ${this.cookiesperhour[i]} cookies`
+  }
+
+  // create total elemnt:
+  let totalItem = document.createElement('li');
+
+  unorderedList.appendChild(totalItem);
+
+  totalItem.textContent=`total: ${this.total} cookies`;
+  
+}
+
+}
+paris.getcustperhour();
+paris.getCookiesperhour();
+paris.render();
+console.log(paris);
+
+
+
+  
+
+
+let lima = {
+  location:'Lima',
+  minCustomer:2,
+  maxCustomer:16,
+  avgCookie:4.6,
+  custperhour:[],
+  cookiesperhour:[],
+  total:0,
+
+  
+  getcustperhour:function ( ){
+    for (let i=0;i<hours.length;i++){
+    this.custperhour.push( randomCust(this.minCustomer,this.maxCustomer));
+    //console.log(lima.custperhour);
+    }
+   
+  },
+  
+  getCookiesperhour:function ( ){
+    for (let i=0;i<hours.length;i++){
+      this.cookiesperhour.push(Math.floor(this.custperhour[i]*this.avgCookie));
+      //console.log(lima.cookiesperhour[i]);
+      this.total+=this.cookiesperhour[i]
+    }
+  },
+
+
+render:function(){
+  // get the parent element by id:
+  let parent= document.getElementById('parent');
+  console.log(parent);
+  
+  let shopName = document.createElement('h3');
+  
+  parent.appendChild(shopName);
+  
+  // give text content
+  shopName.textContent = this.location;
+  
+  // created an element 
+  let unorderedList=document.createElement('ul');
+  // append element to parent
+  parent.appendChild(unorderedList);
+   
+
+  for(let i =0;i<hours.length;i++){
+    // create li
+    let listItem=document.createElement('li');
+    // append li
+    unorderedList.appendChild(listItem);
+    // give text content
+    listItem.textContent = `${hours[i]}: ${this.cookiesperhour[i]} cookies`
+  }
+
+  // create total elemnt:
+  let totalItem = document.createElement('li');
+
+  unorderedList.appendChild(totalItem);
+
+  totalItem.textContent=`total: ${this.total} cookies`;
+  
+}
+
+}
+lima.getcustperhour();
+lima.getCookiesperhour();
+lima.render();
+console.log(lima);
+
+
