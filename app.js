@@ -127,6 +127,7 @@ let paris = new Location('Paris', 20, 38, 2.3);
 
 let lima = new Location('Lima', 2, 16, 4.6);
 console.log(shops);
+
 makeHeader();
 
 makeFooter();
@@ -135,7 +136,7 @@ for (let i = 0; i < shops.length; i++) {
   shops[i].calcCustomersEachHour();
   shops[i].calcCookiesEachHour();
   shops[i].render();
-
+}
 let cookiesForm=document.getElementById('cookiesForm');
 cookiesForm.addEventListener('click', NEXT);
 
@@ -166,9 +167,6 @@ function NEXT(event){
   for (let i = 0; i < shops.length; i++) {
   
     shops[i].render();
+ 
   }
-
-
-}  
 }
-  
