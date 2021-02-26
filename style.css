@@ -1,0 +1,50 @@
+*{box-sizing: border-box;}
+body {
+  margin: o;
+  font-family:cursive;
+}
+
+.header{
+  overflow: hidden;
+  background-color: lightgray;
+  padding: 20px 10px;
+}
+.header a{
+  color:teal;
+  text-align: center;
+
+}
+.header a.logo{
+  font-size: large;
+  font-weight: bold;
+  
+}
+
+.header img{
+    float:left;
+    width: 70px;
+    height: 70px;
+    
+}
+.header h1{
+    position:relative;
+    top: 20px;
+    left:15px;
+}
+
+.CookiesForm{
+    box-sizing: content-box;
+    width:min-content;
+}
+fieldset img{
+    float:right
+    width: 900px;
+    height: 300px;
+}
+footer{
+    text-align: center;
+    font-weight: bold;
+    font-family: monospace;
+    background-color: blue;
+    font-size: larger;
+}

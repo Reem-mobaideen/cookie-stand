@@ -137,7 +137,7 @@ for (let i = 0; i < shops.length; i++) {
   shops[i].calcCookiesEachHour();
   shops[i].render();
 }
-/*let cookiesForm=document.getElementById('cookiesForm');
+let cookiesForm=document.getElementById('cookiesForm');
 cookiesForm.addEventListener('click', NEXT);
 
 
@@ -162,9 +162,11 @@ function NEXT(event){
   newCookies.render();
 
   let container=document.getElementById('cookiesApp');
-  container.textContent='';*/
+  container.textContent='';
   
-  //for (let i = 0; i < shops.length; i++) {
+  for (let i = 0; i < shops.length; i++) {
   
-  //  shops[i].render();
- // }
+    shops[i].render();
+ 
+  }
+}
