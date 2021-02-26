@@ -37,7 +37,7 @@ body {
     width:min-content;
 }
 fieldset img{
-    float:right
+    float:right;
     width: 900px;
     height: 300px;
 }
