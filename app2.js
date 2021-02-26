@@ -127,44 +127,10 @@ let paris = new Location('Paris', 20, 38, 2.3);
 
 let lima = new Location('Lima', 2, 16, 4.6);
 console.log(shops);
-
 makeHeader();
-
-makeFooter();
-
 for (let i = 0; i < shops.length; i++) {
   shops[i].calcCustomersEachHour();
   shops[i].calcCookiesEachHour();
   shops[i].render();
 }
-/*let cookiesForm=document.getElementById('cookiesForm');
-cookiesForm.addEventListener('click', NEXT);
-
-
-
-function NEXT(event){
-  event.preventDefault();
-
-  let location=event.target.locationName.value;
-  console.log(location);
-
-  let purchaseCookies=event.target.purchaseCookies.value;
-  console.log(purchaseCookies);
-
-  let WhereEatingCookies=event.target.WhereEatingCookies.checked;
-  console.log(WhereEatingCookies);
-
-  let WhereEatingCookies=event.target.WhereEatingCookies.checked;
-  console.log(WhereEatingCookies);
-
-  let newCookies=new Location(locationName,purchaseCookies, WhereEatingCookies);
-
-  newCookies.render();
-
-  let container=document.getElementById('cookiesApp');
-  container.textContent='';*/
-  
-  //for (let i = 0; i < shops.length; i++) {
-  
-  //  shops[i].render();
- // }
+makeFooter();
