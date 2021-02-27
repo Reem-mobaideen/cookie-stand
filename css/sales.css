@@ -1,0 +1,99 @@
+*{
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body,
+html{
+    height:100%;
+    width:100%;
+}
+
+body {
+background-color: lightpink;
+font-family:  Georgia, serif;
+}
+
+h1{
+    font-family: fantasy;
+    border-style: inset;
+    font-weight:normal;
+    font-size:larger;
+    background-color:darkslategrey;
+    color:darkgray;
+    text-align: center;
+
+}
+
+ul li {
+    display:inline-block;
+    margin-left: 30px;
+    text-decoration:solid;
+    color:darkgray;
+    margin-top: 10px;
+
+    
+    
+}
+
+li a:hover{
+    color: thistle;
+    background-color:lavenderblush;
+    display:inline-block;
+    text-decoration: none;
+}
+ ol li {
+    text-justify: auto;
+    text-align: center;
+    color: darkgray;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: large;
+    margin-top: 20px;
+
+}
+#cookies-form{
+    display: inline;
+    align-items: center;
+    background-color: thistle;
+    
+
+}
+
+fieldset{
+    color: darkslategrey;
+    border-radius: 10%;
+    border-style:solid;
+    padding-left: 10px;
+    margin-left: 10px;
+    padding-top: 20px;
+    margin-top: 50px;
+
+
+}
+
+fieldset input{
+    color: lightcoral;
+    font-stretch: semi-expanded;
+    font-family: cursive;
+    background-color: navajowhite;
+}
+p{
+    padding-top: 20%;
+}
+
+tr th{
+    font-family: cursive;
+    font-weight: bold;
+    color:darkslategrey;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+
+footer p{
+    margin-top: 10%;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: darkslategrey;
+    font-size: smaller;
+}
