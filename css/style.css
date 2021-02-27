@@ -1,9 +1,10 @@
-*{box-sizing: border-box;}
+*{box-sizing:initial;
+}
 body {
   margin: o;
   font-family:cursive;
+  box-sizing:content-box;
 }
-
 .header{
   overflow: hidden;
   background-color: lightgray;
@@ -31,14 +32,18 @@ body {
     top: 20px;
     left:15px;
 }
+.nav a{
+  float: right;
+}
 
 .CookiesForm{
     box-sizing: content-box;
     width:min-content;
 }
 fieldset img{
-    float:right;
-    width: 900px;
+    float:left;
+    position:static;
+    width: 300px;
     height: 300px;
 }
 footer{
