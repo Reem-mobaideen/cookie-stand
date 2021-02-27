@@ -3,7 +3,12 @@ function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm']
+//const entry = new Entry([]);
 
+//const Entry = function (items) {
+
+  //this.items = items;
+//}
 let shops = [];
 function Location(locationName, minCustomer, maxCustomer, avgCookies) {
   this.locationName = locationName;
@@ -84,6 +89,7 @@ Location.prototype.render = function () {
     dataRow.appendChild(tdElement);
   }
 
+ 
   let totalDataForEachShop = document.createElement('td');
   dataRow.appendChild(totalDataForEachShop);
   totalDataForEachShop.textContent = this.totalCookies;
@@ -115,6 +121,16 @@ let makeFooter = function () {
   let finalTh = document.createElement('th');
   footerRow.appendChild(finalTh);
   finalTh.textContent = totalOfTotal;
+
+
+function addSelectedItemToTable(){
+  let pickedItem = document.getElementById('items').value;
+entry.addItem(pickedItem);
+}
+addSelectedItemToTable()
+
+const cookiesForm = document.getElementById('cookies-form');
+cookiesForm.addEventListener('check out', handleSubmit);
 }
 
 let seattle = new Location('Seattle', 23, 65, 6.3);
@@ -128,9 +144,19 @@ let paris = new Location('Paris', 20, 38, 2.3);
 let lima = new Location('Lima', 2, 16, 4.6);
 console.log(shops);
 makeHeader();
+
+
 for (let i = 0; i < shops.length; i++) {
   shops[i].calcCustomersEachHour();
   shops[i].calcCookiesEachHour();
   shops[i].render();
 }
+
+
+//const cookiesForm = document.getElementById('cookies-form');
+//cookiesForm.addEventListener('check out', handleSubmit);
+
+
+
 makeFooter();
+
