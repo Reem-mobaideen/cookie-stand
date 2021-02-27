@@ -132,6 +132,11 @@ makeHeader();
 
 makeFooter();
 
+
+
+
+
+
 for (let i = 0; i < shops.length; i++) {
   shops[i].calcCustomersEachHour();
   shops[i].calcCookiesEachHour();
@@ -160,6 +165,9 @@ function NEXT(event){
   let newCookies=new Location(locationName,purchaseCookies, WhereEatingCookies);
 
   newCookies.render();
+
+  //const cookiesForm = document.getElementById('cookies-form');
+//cookiesForm.addEventListener('check out', handleSubmit);
 
   let container=document.getElementById('cookiesApp');
   container.textContent='';
